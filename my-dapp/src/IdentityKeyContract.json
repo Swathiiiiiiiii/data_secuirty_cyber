@@ -1,0 +1,2694 @@
+{
+  "contractName": "IdentityKeyContract",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "registeredIdentityList",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "identityData",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "newIdentity",
+          "type": "string"
+        }
+      ],
+      "name": "registerUserIdentity",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "removedIdentity",
+          "type": "address"
+        }
+      ],
+      "name": "removeUserIdentity",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "userIdentity",
+          "type": "address"
+        }
+      ],
+      "name": "retrieveUserIdentity",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"newIdentity\",\"type\":\"string\"}],\"name\":\"registerUserIdentity\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"registeredIdentityList\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"identityData\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"removedIdentity\",\"type\":\"address\"}],\"name\":\"removeUserIdentity\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"userIdentity\",\"type\":\"address\"}],\"name\":\"retrieveUserIdentity\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"registerUserIdentity(string)\":{\"details\":\"Registering a new user in the system\",\"params\":{\"newIdentity\":\": the address of the new user\"}},\"removeUserIdentity(address)\":{\"details\":\"Remove a user from the registry\",\"params\":{\"removedIdentity\":\": the identity of the user\"}},\"retrieveUserIdentity(address)\":{\"details\":\"Get the identity of a user based on its address/public key\",\"params\":{\"userIdentity\":\": address of the user\"}}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IdentityKeyContract.sol\":\"IdentityKeyContract\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IdentityKeyContract.sol\":{\"keccak256\":\"0xcbe0b5e0d33599a40319eb68bdeb4e6f4248fd1ef5241406f13f77788e18d710\",\"urls\":[\"bzz-raw://b550cf121ea4dcdd14a7aaea839bc4e9c8e93f3dc436c8e9f1d19124c5c19502\",\"dweb:/ipfs/QmciPjdUzhaYqVEvtiXuPt7VpJkbvwrqJkW32RuZK6WZSg\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506108b4806100206000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c8063115b440f146100515780634fde811f1461010e5780636dee09d514610152578063b34941c71461020d575b600080fd5b6100936004803603602081101561006757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506102ca565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100d35780820151818401526020810190506100b8565b50505050905090810190601f1680156101005780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6101506004803603602081101561012457600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610380565b005b61020b6004803603602081101561016857600080fd5b810190808035906020019064010000000081111561018557600080fd5b82018360208201111561019757600080fd5b803590602001918460018302840111640100000000831117156101b957600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290505050610458565b005b61024f6004803603602081101561022357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610583565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561028f578082015181840152602081019050610274565b50505050905090810190601f1680156102bc5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000602052806000526040600020600091509050806000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103765780601f1061034b57610100808354040283529160200191610376565b820191906000526020600020905b81548152906001019060200180831161035957829003601f168201915b5050505050905081565b8073ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610404576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602c815260200180610833602c913960400191505060405180910390fd5b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600080820160006104539190610732565b505050565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018054600181600116156101000203166002900490501415610507576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602181526020018061085f6021913960400191505060405180910390fd5b61050f61077a565b6040518060200160405280838152509050806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082015181600001908051906020019061057b92919061078d565b509050505050565b606060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018054600181600116156101000203166002900490501415610651576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260148152602001807f5573657220646f6573206e6f742065786973742e00000000000000000000000081525060200191505060405180910390fd5b6000808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156107265780601f106106fb57610100808354040283529160200191610726565b820191906000526020600020905b81548152906001019060200180831161070957829003601f168201915b50505050509050919050565b50805460018160011615610100020316600290046000825580601f106107585750610777565b601f016020900490600052602060002090810190610776919061080d565b5b50565b6040518060200160405280606081525090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106107ce57805160ff19168380011785556107fc565b828001600101855582156107fc579182015b828111156107fb5782518255916020019190600101906107e0565b5b509050610809919061080d565b5090565b61082f91905b8082111561082b576000816000905550600101610813565b5090565b9056fe4f6e6c7920746865206f776e65722063616e2072656d6f766520697473206f776e6572206964656e74697479546865206964656e746974792068617320616c726561647920657869737465642ea265627a7a72315820cc9cc8db17b6c37d09e71c8704c999475fdd9453212183ee5ba8c179dc8bc2b464736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c8063115b440f146100515780634fde811f1461010e5780636dee09d514610152578063b34941c71461020d575b600080fd5b6100936004803603602081101561006757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506102ca565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156100d35780820151818401526020810190506100b8565b50505050905090810190601f1680156101005780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6101506004803603602081101561012457600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610380565b005b61020b6004803603602081101561016857600080fd5b810190808035906020019064010000000081111561018557600080fd5b82018360208201111561019757600080fd5b803590602001918460018302840111640100000000831117156101b957600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290505050610458565b005b61024f6004803603602081101561022357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610583565b6040518080602001828103825283818151815260200191508051906020019080838360005b8381101561028f578082015181840152602081019050610274565b50505050905090810190601f1680156102bc5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6000602052806000526040600020600091509050806000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156103765780601f1061034b57610100808354040283529160200191610376565b820191906000526020600020905b81548152906001019060200180831161035957829003601f168201915b5050505050905081565b8073ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610404576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602c815260200180610833602c913960400191505060405180910390fd5b6000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600080820160006104539190610732565b505050565b60008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018054600181600116156101000203166002900490501415610507576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602181526020018061085f6021913960400191505060405180910390fd5b61050f61077a565b6040518060200160405280838152509050806000803373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600082015181600001908051906020019061057b92919061078d565b509050505050565b606060008060003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018054600181600116156101000203166002900490501415610651576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260148152602001807f5573657220646f6573206e6f742065786973742e00000000000000000000000081525060200191505060405180910390fd5b6000808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206000018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156107265780601f106106fb57610100808354040283529160200191610726565b820191906000526020600020905b81548152906001019060200180831161070957829003601f168201915b50505050509050919050565b50805460018160011615610100020316600290046000825580601f106107585750610777565b601f016020900490600052602060002090810190610776919061080d565b5b50565b6040518060200160405280606081525090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106107ce57805160ff19168380011785556107fc565b828001600101855582156107fc579182015b828111156107fb5782518255916020019190600101906107e0565b5b509050610809919061080d565b5090565b61082f91905b8082111561082b576000816000905550600101610813565b5090565b9056fe4f6e6c7920746865206f776e65722063616e2072656d6f766520697473206f776e6572206964656e74697479546865206964656e746974792068617320616c726561647920657869737465642ea265627a7a72315820cc9cc8db17b6c37d09e71c8704c999475fdd9453212183ee5ba8c179dc8bc2b464736f6c63430005100032",
+  "sourceMap": "37:2075:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;37:2075:4;;;;;;;",
+  "deployedSourceMap": "37:2075:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;37:2075:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;820:63;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;820:63:4;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;820:63:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1468:217;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1468:217:4;;;;;;;;;;;;;;;;;;;:::i;:::-;;1019:318;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1019:318:4;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;1019:318:4;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1019:318:4;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1019:318:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1019:318:4;;;;;;;;;;;;;;;:::i;:::-;;1835:270;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1835:270:4;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1835:270:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;820:63;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;1468:217::-;1561:15;1547:29;;:10;:29;;;1539:86;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1643:22;:34;1666:10;1643:34;;;;;;;;;;;;;;;;1636:41;;;;;;;;:::i;:::-;;;1468:217;:::o;1019:318::-;1169:1;1110:22;:34;1133:10;1110:34;;;;;;;;;;;;;;;:47;;1104:61;;;;;;;;;;;;;;;;:66;;1096:112;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1219:27;;:::i;:::-;1249:25;;;;;;;;1262:11;1249:25;;;1219:55;;1322:7;1285:22;:34;1308:10;1285:34;;;;;;;;;;;;;;;:44;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;1019:318;;:::o;1835:270::-;1907:13;2004:1;1946:22;:34;1969:10;1946:34;;;;;;;;;;;;;;;:47;;1940:61;;;;;;;;;;;;;;;;:65;;1932:98;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2048:22;:36;2071:12;2048:36;;;;;;;;;;;;;;;:49;;2041:56;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1835:270;;;:::o;37:2075::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity >=0.5.0 <0.7.0;\r\n\r\n\r\ncontract IdentityKeyContract{\r\n\r\n    /**\r\n     * @dev UserIdentity describes the identity of a user. In this simple struct, the identity is represented by a string. One can update this contract by introduce\r\n     * more information into the struct then deploy the modified contract on the blockchain. The address of the new contract will be registred into the Proxycontract\r\n     * for users to be aware of its existence.\r\n    */\r\n\r\n    struct UserIdentity{\r\n        // Users are allowed to register raw identity data that could not be their real names.\r\n        string identityData;\r\n    }\r\n\r\n    /**\r\n     * @dev Store all the user addresses registrered in the system\r\n     * @notice user address is computed as the first 20 bytes of the hash of the user's public key\r\n    */\r\n    mapping (address => UserIdentity) public registeredIdentityList;\r\n\r\n\r\n    /**\r\n     * @dev Registering a new user in the system\r\n     * @param newIdentity: the address of the new user\r\n    */\r\n\r\n    function registerUserIdentity(string memory newIdentity) public {\r\n\r\n        require(bytes(registeredIdentityList[msg.sender].identityData).length != 0, \"The identity has already existed.\");\r\n        UserIdentity memory newUser = UserIdentity(newIdentity);\r\n        registeredIdentityList[msg.sender] = newUser;\r\n    }\r\n\r\n\r\n    /**\r\n     * @dev Remove a user from the registry\r\n     * @param removedIdentity: the identity of the user\r\n    */\r\n\r\n    function removeUserIdentity(address removedIdentity) public {\r\n        require(msg.sender == removedIdentity, \"Only the owner can remove its owner identity\");\r\n        delete registeredIdentityList[msg.sender];\r\n    }\r\n\r\n\r\n    /**\r\n     * @dev Get the identity of a user based on its address/public key\r\n     * @param userIdentity: address of the user\r\n    */\r\n\r\n    function retrieveUserIdentity(address userIdentity) public view returns(string memory){\r\n        require(bytes(registeredIdentityList[msg.sender].identityData).length !=0, \"User does not exist.\");\r\n        return registeredIdentityList[userIdentity].identityData;\r\n    }\r\n\r\n\r\n}\r\n",
+  "sourcePath": "D:\\OneDrive\\Desktop\\hack_cult_project\\contracts\\IdentityKeyContract.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/IdentityKeyContract.sol",
+    "exportedSymbols": {
+      "IdentityKeyContract": [
+        2145
+      ]
+    },
+    "id": 2146,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2057,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:4"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 2145,
+        "linearizedBaseContracts": [
+          2145
+        ],
+        "name": "IdentityKeyContract",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "IdentityKeyContract.UserIdentity",
+            "id": 2060,
+            "members": [
+              {
+                "constant": false,
+                "id": 2059,
+                "name": "identityData",
+                "nodeType": "VariableDeclaration",
+                "scope": 2060,
+                "src": "600:19:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 2058,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "600:6:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "UserIdentity",
+            "nodeType": "StructDefinition",
+            "scope": 2145,
+            "src": "474:153:4",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 2064,
+            "name": "registeredIdentityList",
+            "nodeType": "VariableDeclaration",
+            "scope": 2145,
+            "src": "820:63:4",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserIdentity_$2060_storage_$",
+              "typeString": "mapping(address => struct IdentityKeyContract.UserIdentity)"
+            },
+            "typeName": {
+              "id": 2063,
+              "keyType": {
+                "id": 2061,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "829:7:4",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "820:33:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserIdentity_$2060_storage_$",
+                "typeString": "mapping(address => struct IdentityKeyContract.UserIdentity)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 2062,
+                "name": "UserIdentity",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 2060,
+                "src": "840:12:4",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_UserIdentity_$2060_storage_ptr",
+                  "typeString": "struct IdentityKeyContract.UserIdentity"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2096,
+              "nodeType": "Block",
+              "src": "1083:254:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 2079,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "baseExpression": {
+                                    "argumentTypes": null,
+                                    "id": 2071,
+                                    "name": "registeredIdentityList",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 2064,
+                                    "src": "1110:22:4",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserIdentity_$2060_storage_$",
+                                      "typeString": "mapping(address => struct IdentityKeyContract.UserIdentity storage ref)"
+                                    }
+                                  },
+                                  "id": 2074,
+                                  "indexExpression": {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 2072,
+                                      "name": "msg",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 2274,
+                                      "src": "1133:3:4",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_magic_message",
+                                        "typeString": "msg"
+                                      }
+                                    },
+                                    "id": 2073,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "sender",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": null,
+                                    "src": "1133:10:4",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "nodeType": "IndexAccess",
+                                  "src": "1110:34:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_UserIdentity_$2060_storage",
+                                    "typeString": "struct IdentityKeyContract.UserIdentity storage ref"
+                                  }
+                                },
+                                "id": 2075,
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "identityData",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 2059,
+                                "src": "1110:47:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_storage",
+                                  "typeString": "string storage ref"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_storage",
+                                  "typeString": "string storage ref"
+                                }
+                              ],
+                              "id": 2070,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "1104:5:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                                "typeString": "type(bytes storage pointer)"
+                              },
+                              "typeName": "bytes"
+                            },
+                            "id": 2076,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1104:54:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_storage_ptr",
+                              "typeString": "bytes storage pointer"
+                            }
+                          },
+                          "id": 2077,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1104:61:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 2078,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1169:1:4",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        },
+                        "src": "1104:66:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "546865206964656e746974792068617320616c726561647920657869737465642e",
+                        "id": 2080,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1172:35:4",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_f3e764f05b13aadf8f0363b0d732b7bbf3f1d27937694c02b2ced0f39ccd3a2e",
+                          "typeString": "literal_string \"The identity has already existed.\""
+                        },
+                        "value": "The identity has already existed."
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_f3e764f05b13aadf8f0363b0d732b7bbf3f1d27937694c02b2ced0f39ccd3a2e",
+                          "typeString": "literal_string \"The identity has already existed.\""
+                        }
+                      ],
+                      "id": 2069,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        2277,
+                        2278
+                      ],
+                      "referencedDeclaration": 2278,
+                      "src": "1096:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2081,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1096:112:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2082,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1096:112:4"
+                },
+                {
+                  "assignments": [
+                    2084
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 2084,
+                      "name": "newUser",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 2096,
+                      "src": "1219:27:4",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_UserIdentity_$2060_memory_ptr",
+                        "typeString": "struct IdentityKeyContract.UserIdentity"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 2083,
+                        "name": "UserIdentity",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 2060,
+                        "src": "1219:12:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_UserIdentity_$2060_storage_ptr",
+                          "typeString": "struct IdentityKeyContract.UserIdentity"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 2088,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 2086,
+                        "name": "newIdentity",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2066,
+                        "src": "1262:11:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      ],
+                      "id": 2085,
+                      "name": "UserIdentity",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2060,
+                      "src": "1249:12:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_UserIdentity_$2060_storage_ptr_$",
+                        "typeString": "type(struct IdentityKeyContract.UserIdentity storage pointer)"
+                      }
+                    },
+                    "id": 2087,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1249:25:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_UserIdentity_$2060_memory",
+                      "typeString": "struct IdentityKeyContract.UserIdentity memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1219:55:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 2094,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 2089,
+                        "name": "registeredIdentityList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2064,
+                        "src": "1285:22:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserIdentity_$2060_storage_$",
+                          "typeString": "mapping(address => struct IdentityKeyContract.UserIdentity storage ref)"
+                        }
+                      },
+                      "id": 2092,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 2090,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2274,
+                          "src": "1308:3:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 2091,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1308:10:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1285:34:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_UserIdentity_$2060_storage",
+                        "typeString": "struct IdentityKeyContract.UserIdentity storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 2093,
+                      "name": "newUser",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2084,
+                      "src": "1322:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_UserIdentity_$2060_memory_ptr",
+                        "typeString": "struct IdentityKeyContract.UserIdentity memory"
+                      }
+                    },
+                    "src": "1285:44:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_UserIdentity_$2060_storage",
+                      "typeString": "struct IdentityKeyContract.UserIdentity storage ref"
+                    }
+                  },
+                  "id": 2095,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1285:44:4"
+                }
+              ]
+            },
+            "documentation": "@dev Registering a new user in the system\n@param newIdentity: the address of the new user",
+            "id": 2097,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "registerUserIdentity",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2067,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2066,
+                  "name": "newIdentity",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2097,
+                  "src": "1049:25:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2065,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1049:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1048:27:4"
+            },
+            "returnParameters": {
+              "id": 2068,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1083:0:4"
+            },
+            "scope": 2145,
+            "src": "1019:318:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2116,
+              "nodeType": "Block",
+              "src": "1528:157:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 2106,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 2103,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 2274,
+                            "src": "1547:3:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 2104,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1547:10:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "id": 2105,
+                          "name": "removedIdentity",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2099,
+                          "src": "1561:15:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "1547:29:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "4f6e6c7920746865206f776e65722063616e2072656d6f766520697473206f776e6572206964656e74697479",
+                        "id": 2107,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1578:46:4",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_6ed3bb6a78ab207180a788f9bb565add0e71403052a8d19da5cbc39c884579c8",
+                          "typeString": "literal_string \"Only the owner can remove its owner identity\""
+                        },
+                        "value": "Only the owner can remove its owner identity"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_6ed3bb6a78ab207180a788f9bb565add0e71403052a8d19da5cbc39c884579c8",
+                          "typeString": "literal_string \"Only the owner can remove its owner identity\""
+                        }
+                      ],
+                      "id": 2102,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        2277,
+                        2278
+                      ],
+                      "referencedDeclaration": 2278,
+                      "src": "1539:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2108,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1539:86:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2109,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1539:86:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 2114,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "delete",
+                    "prefix": true,
+                    "src": "1636:41:4",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 2110,
+                        "name": "registeredIdentityList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2064,
+                        "src": "1643:22:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserIdentity_$2060_storage_$",
+                          "typeString": "mapping(address => struct IdentityKeyContract.UserIdentity storage ref)"
+                        }
+                      },
+                      "id": 2113,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 2111,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2274,
+                          "src": "1666:3:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 2112,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1666:10:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1643:34:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_UserIdentity_$2060_storage",
+                        "typeString": "struct IdentityKeyContract.UserIdentity storage ref"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2115,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1636:41:4"
+                }
+              ]
+            },
+            "documentation": "@dev Remove a user from the registry\n@param removedIdentity: the identity of the user",
+            "id": 2117,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeUserIdentity",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2100,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2099,
+                  "name": "removedIdentity",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2117,
+                  "src": "1496:23:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2098,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1496:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1495:25:4"
+            },
+            "returnParameters": {
+              "id": 2101,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1528:0:4"
+            },
+            "scope": 2145,
+            "src": "1468:217:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 2143,
+              "nodeType": "Block",
+              "src": "1921:184:4",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 2134,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "baseExpression": {
+                                    "argumentTypes": null,
+                                    "id": 2126,
+                                    "name": "registeredIdentityList",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 2064,
+                                    "src": "1946:22:4",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserIdentity_$2060_storage_$",
+                                      "typeString": "mapping(address => struct IdentityKeyContract.UserIdentity storage ref)"
+                                    }
+                                  },
+                                  "id": 2129,
+                                  "indexExpression": {
+                                    "argumentTypes": null,
+                                    "expression": {
+                                      "argumentTypes": null,
+                                      "id": 2127,
+                                      "name": "msg",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 2274,
+                                      "src": "1969:3:4",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_magic_message",
+                                        "typeString": "msg"
+                                      }
+                                    },
+                                    "id": 2128,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "memberName": "sender",
+                                    "nodeType": "MemberAccess",
+                                    "referencedDeclaration": null,
+                                    "src": "1969:10:4",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_address_payable",
+                                      "typeString": "address payable"
+                                    }
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "nodeType": "IndexAccess",
+                                  "src": "1946:34:4",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_struct$_UserIdentity_$2060_storage",
+                                    "typeString": "struct IdentityKeyContract.UserIdentity storage ref"
+                                  }
+                                },
+                                "id": 2130,
+                                "isConstant": false,
+                                "isLValue": true,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "identityData",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 2059,
+                                "src": "1946:47:4",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_string_storage",
+                                  "typeString": "string storage ref"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_storage",
+                                  "typeString": "string storage ref"
+                                }
+                              ],
+                              "id": 2125,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "1940:5:4",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_bytes_storage_ptr_$",
+                                "typeString": "type(bytes storage pointer)"
+                              },
+                              "typeName": "bytes"
+                            },
+                            "id": 2131,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1940:54:4",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_storage_ptr",
+                              "typeString": "bytes storage pointer"
+                            }
+                          },
+                          "id": 2132,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "length",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1940:61:4",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 2133,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "2004:1:4",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        },
+                        "src": "1940:65:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "5573657220646f6573206e6f742065786973742e",
+                        "id": 2135,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2007:22:4",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_8aa4f6b9fbe8bd17d23425d28f653588c4728bbb98000749aaba81ee18a5d8e9",
+                          "typeString": "literal_string \"User does not exist.\""
+                        },
+                        "value": "User does not exist."
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_8aa4f6b9fbe8bd17d23425d28f653588c4728bbb98000749aaba81ee18a5d8e9",
+                          "typeString": "literal_string \"User does not exist.\""
+                        }
+                      ],
+                      "id": 2124,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        2277,
+                        2278
+                      ],
+                      "referencedDeclaration": 2278,
+                      "src": "1932:7:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 2136,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1932:98:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2137,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1932:98:4"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "expression": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 2138,
+                        "name": "registeredIdentityList",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2064,
+                        "src": "2048:22:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_UserIdentity_$2060_storage_$",
+                          "typeString": "mapping(address => struct IdentityKeyContract.UserIdentity storage ref)"
+                        }
+                      },
+                      "id": 2140,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 2139,
+                        "name": "userIdentity",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2119,
+                        "src": "2071:12:4",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "2048:36:4",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_UserIdentity_$2060_storage",
+                        "typeString": "struct IdentityKeyContract.UserIdentity storage ref"
+                      }
+                    },
+                    "id": 2141,
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "memberName": "identityData",
+                    "nodeType": "MemberAccess",
+                    "referencedDeclaration": 2059,
+                    "src": "2048:49:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage",
+                      "typeString": "string storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 2123,
+                  "id": 2142,
+                  "nodeType": "Return",
+                  "src": "2041:56:4"
+                }
+              ]
+            },
+            "documentation": "@dev Get the identity of a user based on its address/public key\n@param userIdentity: address of the user",
+            "id": 2144,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "retrieveUserIdentity",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2120,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2119,
+                  "name": "userIdentity",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2144,
+                  "src": "1865:20:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2118,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1865:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1864:22:4"
+            },
+            "returnParameters": {
+              "id": 2123,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2122,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2144,
+                  "src": "1907:13:4",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2121,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1907:6:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1906:15:4"
+            },
+            "scope": 2145,
+            "src": "1835:270:4",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 2146,
+        "src": "37:2075:4"
+      }
+    ],
+    "src": "0:2114:4"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/IdentityKeyContract.sol",
+      "exportedSymbols": {
+        "IdentityKeyContract": [
+          2145
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.7",
+            ".0"
+          ]
+        },
+        "id": 2057,
+        "name": "PragmaDirective",
+        "src": "0:31:4"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            2145
+          ],
+          "name": "IdentityKeyContract",
+          "scope": 2146
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "IdentityKeyContract.UserIdentity",
+              "name": "UserIdentity",
+              "scope": 2145,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "identityData",
+                  "scope": 2060,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 2058,
+                    "name": "ElementaryTypeName",
+                    "src": "600:6:4"
+                  }
+                ],
+                "id": 2059,
+                "name": "VariableDeclaration",
+                "src": "600:19:4"
+              }
+            ],
+            "id": 2060,
+            "name": "StructDefinition",
+            "src": "474:153:4"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "registeredIdentityList",
+              "scope": 2145,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(address => struct IdentityKeyContract.UserIdentity)",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(address => struct IdentityKeyContract.UserIdentity)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 2061,
+                    "name": "ElementaryTypeName",
+                    "src": "829:7:4"
+                  },
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "UserIdentity",
+                      "referencedDeclaration": 2060,
+                      "type": "struct IdentityKeyContract.UserIdentity"
+                    },
+                    "id": 2062,
+                    "name": "UserDefinedTypeName",
+                    "src": "840:12:4"
+                  }
+                ],
+                "id": 2063,
+                "name": "Mapping",
+                "src": "820:33:4"
+              }
+            ],
+            "id": 2064,
+            "name": "VariableDeclaration",
+            "src": "820:63:4"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Registering a new user in the system\n@param newIdentity: the address of the new user",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "registerUserIdentity",
+              "scope": 2145,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "newIdentity",
+                      "scope": 2097,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 2065,
+                        "name": "ElementaryTypeName",
+                        "src": "1049:6:4"
+                      }
+                    ],
+                    "id": 2066,
+                    "name": "VariableDeclaration",
+                    "src": "1049:25:4"
+                  }
+                ],
+                "id": 2067,
+                "name": "ParameterList",
+                "src": "1048:27:4"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2068,
+                "name": "ParameterList",
+                "src": "1083:0:4"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                {
+                                  "typeIdentifier": "t_stringliteral_f3e764f05b13aadf8f0363b0d732b7bbf3f1d27937694c02b2ced0f39ccd3a2e",
+                                  "typeString": "literal_string \"The identity has already existed.\""
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                2277,
+                                2278
+                              ],
+                              "referencedDeclaration": 2278,
+                              "type": "function (bool,string memory) pure",
+                              "value": "require"
+                            },
+                            "id": 2069,
+                            "name": "Identifier",
+                            "src": "1096:7:4"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "!=",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "length",
+                                  "referencedDeclaration": null,
+                                  "type": "uint256"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "type": "bytes storage pointer",
+                                      "type_conversion": true
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_string_storage",
+                                              "typeString": "string storage ref"
+                                            }
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "type": "type(bytes storage pointer)",
+                                          "value": "bytes"
+                                        },
+                                        "id": 2070,
+                                        "name": "ElementaryTypeNameExpression",
+                                        "src": "1104:5:4"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "identityData",
+                                          "referencedDeclaration": 2059,
+                                          "type": "string storage ref"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "isConstant": false,
+                                              "isLValue": true,
+                                              "isPure": false,
+                                              "lValueRequested": false,
+                                              "type": "struct IdentityKeyContract.UserIdentity storage ref"
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "overloadedDeclarations": [
+                                                    null
+                                                  ],
+                                                  "referencedDeclaration": 2064,
+                                                  "type": "mapping(address => struct IdentityKeyContract.UserIdentity storage ref)",
+                                                  "value": "registeredIdentityList"
+                                                },
+                                                "id": 2071,
+                                                "name": "Identifier",
+                                                "src": "1110:22:4"
+                                              },
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "isConstant": false,
+                                                  "isLValue": false,
+                                                  "isPure": false,
+                                                  "lValueRequested": false,
+                                                  "member_name": "sender",
+                                                  "referencedDeclaration": null,
+                                                  "type": "address payable"
+                                                },
+                                                "children": [
+                                                  {
+                                                    "attributes": {
+                                                      "argumentTypes": null,
+                                                      "overloadedDeclarations": [
+                                                        null
+                                                      ],
+                                                      "referencedDeclaration": 2274,
+                                                      "type": "msg",
+                                                      "value": "msg"
+                                                    },
+                                                    "id": 2072,
+                                                    "name": "Identifier",
+                                                    "src": "1133:3:4"
+                                                  }
+                                                ],
+                                                "id": 2073,
+                                                "name": "MemberAccess",
+                                                "src": "1133:10:4"
+                                              }
+                                            ],
+                                            "id": 2074,
+                                            "name": "IndexAccess",
+                                            "src": "1110:34:4"
+                                          }
+                                        ],
+                                        "id": 2075,
+                                        "name": "MemberAccess",
+                                        "src": "1110:47:4"
+                                      }
+                                    ],
+                                    "id": 2076,
+                                    "name": "FunctionCall",
+                                    "src": "1104:54:4"
+                                  }
+                                ],
+                                "id": 2077,
+                                "name": "MemberAccess",
+                                "src": "1104:61:4"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "30",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "number",
+                                  "type": "int_const 0",
+                                  "value": "0"
+                                },
+                                "id": 2078,
+                                "name": "Literal",
+                                "src": "1169:1:4"
+                              }
+                            ],
+                            "id": 2079,
+                            "name": "BinaryOperation",
+                            "src": "1104:66:4"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "546865206964656e746974792068617320616c726561647920657869737465642e",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "string",
+                              "type": "literal_string \"The identity has already existed.\"",
+                              "value": "The identity has already existed."
+                            },
+                            "id": 2080,
+                            "name": "Literal",
+                            "src": "1172:35:4"
+                          }
+                        ],
+                        "id": 2081,
+                        "name": "FunctionCall",
+                        "src": "1096:112:4"
+                      }
+                    ],
+                    "id": 2082,
+                    "name": "ExpressionStatement",
+                    "src": "1096:112:4"
+                  },
+                  {
+                    "attributes": {
+                      "assignments": [
+                        2084
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "newUser",
+                          "scope": 2096,
+                          "stateVariable": false,
+                          "storageLocation": "memory",
+                          "type": "struct IdentityKeyContract.UserIdentity",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "UserIdentity",
+                              "referencedDeclaration": 2060,
+                              "type": "struct IdentityKeyContract.UserIdentity"
+                            },
+                            "id": 2083,
+                            "name": "UserDefinedTypeName",
+                            "src": "1219:12:4"
+                          }
+                        ],
+                        "id": 2084,
+                        "name": "VariableDeclaration",
+                        "src": "1219:27:4"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": true,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "struct IdentityKeyContract.UserIdentity memory",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2060,
+                              "type": "type(struct IdentityKeyContract.UserIdentity storage pointer)",
+                              "value": "UserIdentity"
+                            },
+                            "id": 2085,
+                            "name": "Identifier",
+                            "src": "1249:12:4"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2066,
+                              "type": "string memory",
+                              "value": "newIdentity"
+                            },
+                            "id": 2086,
+                            "name": "Identifier",
+                            "src": "1262:11:4"
+                          }
+                        ],
+                        "id": 2087,
+                        "name": "FunctionCall",
+                        "src": "1249:25:4"
+                      }
+                    ],
+                    "id": 2088,
+                    "name": "VariableDeclarationStatement",
+                    "src": "1219:55:4"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "struct IdentityKeyContract.UserIdentity storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "struct IdentityKeyContract.UserIdentity storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2064,
+                                  "type": "mapping(address => struct IdentityKeyContract.UserIdentity storage ref)",
+                                  "value": "registeredIdentityList"
+                                },
+                                "id": 2089,
+                                "name": "Identifier",
+                                "src": "1285:22:4"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address payable"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 2274,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 2090,
+                                    "name": "Identifier",
+                                    "src": "1308:3:4"
+                                  }
+                                ],
+                                "id": 2091,
+                                "name": "MemberAccess",
+                                "src": "1308:10:4"
+                              }
+                            ],
+                            "id": 2092,
+                            "name": "IndexAccess",
+                            "src": "1285:34:4"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2084,
+                              "type": "struct IdentityKeyContract.UserIdentity memory",
+                              "value": "newUser"
+                            },
+                            "id": 2093,
+                            "name": "Identifier",
+                            "src": "1322:7:4"
+                          }
+                        ],
+                        "id": 2094,
+                        "name": "Assignment",
+                        "src": "1285:44:4"
+                      }
+                    ],
+                    "id": 2095,
+                    "name": "ExpressionStatement",
+                    "src": "1285:44:4"
+                  }
+                ],
+                "id": 2096,
+                "name": "Block",
+                "src": "1083:254:4"
+              }
+            ],
+            "id": 2097,
+            "name": "FunctionDefinition",
+            "src": "1019:318:4"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Remove a user from the registry\n@param removedIdentity: the identity of the user",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "removeUserIdentity",
+              "scope": 2145,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "removedIdentity",
+                      "scope": 2117,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 2098,
+                        "name": "ElementaryTypeName",
+                        "src": "1496:7:4"
+                      }
+                    ],
+                    "id": 2099,
+                    "name": "VariableDeclaration",
+                    "src": "1496:23:4"
+                  }
+                ],
+                "id": 2100,
+                "name": "ParameterList",
+                "src": "1495:25:4"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2101,
+                "name": "ParameterList",
+                "src": "1528:0:4"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                {
+                                  "typeIdentifier": "t_stringliteral_6ed3bb6a78ab207180a788f9bb565add0e71403052a8d19da5cbc39c884579c8",
+                                  "typeString": "literal_string \"Only the owner can remove its owner identity\""
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                2277,
+                                2278
+                              ],
+                              "referencedDeclaration": 2278,
+                              "type": "function (bool,string memory) pure",
+                              "value": "require"
+                            },
+                            "id": 2102,
+                            "name": "Identifier",
+                            "src": "1539:7:4"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address payable"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 2274,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 2103,
+                                    "name": "Identifier",
+                                    "src": "1547:3:4"
+                                  }
+                                ],
+                                "id": 2104,
+                                "name": "MemberAccess",
+                                "src": "1547:10:4"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2099,
+                                  "type": "address",
+                                  "value": "removedIdentity"
+                                },
+                                "id": 2105,
+                                "name": "Identifier",
+                                "src": "1561:15:4"
+                              }
+                            ],
+                            "id": 2106,
+                            "name": "BinaryOperation",
+                            "src": "1547:29:4"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "4f6e6c7920746865206f776e65722063616e2072656d6f766520697473206f776e6572206964656e74697479",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "string",
+                              "type": "literal_string \"Only the owner can remove its owner identity\"",
+                              "value": "Only the owner can remove its owner identity"
+                            },
+                            "id": 2107,
+                            "name": "Literal",
+                            "src": "1578:46:4"
+                          }
+                        ],
+                        "id": 2108,
+                        "name": "FunctionCall",
+                        "src": "1539:86:4"
+                      }
+                    ],
+                    "id": 2109,
+                    "name": "ExpressionStatement",
+                    "src": "1539:86:4"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "delete",
+                          "prefix": true,
+                          "type": "tuple()"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "struct IdentityKeyContract.UserIdentity storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2064,
+                                  "type": "mapping(address => struct IdentityKeyContract.UserIdentity storage ref)",
+                                  "value": "registeredIdentityList"
+                                },
+                                "id": 2110,
+                                "name": "Identifier",
+                                "src": "1643:22:4"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address payable"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 2274,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 2111,
+                                    "name": "Identifier",
+                                    "src": "1666:3:4"
+                                  }
+                                ],
+                                "id": 2112,
+                                "name": "MemberAccess",
+                                "src": "1666:10:4"
+                              }
+                            ],
+                            "id": 2113,
+                            "name": "IndexAccess",
+                            "src": "1643:34:4"
+                          }
+                        ],
+                        "id": 2114,
+                        "name": "UnaryOperation",
+                        "src": "1636:41:4"
+                      }
+                    ],
+                    "id": 2115,
+                    "name": "ExpressionStatement",
+                    "src": "1636:41:4"
+                  }
+                ],
+                "id": 2116,
+                "name": "Block",
+                "src": "1528:157:4"
+              }
+            ],
+            "id": 2117,
+            "name": "FunctionDefinition",
+            "src": "1468:217:4"
+          },
+          {
+            "attributes": {
+              "documentation": "@dev Get the identity of a user based on its address/public key\n@param userIdentity: address of the user",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "retrieveUserIdentity",
+              "scope": 2145,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "userIdentity",
+                      "scope": 2144,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 2118,
+                        "name": "ElementaryTypeName",
+                        "src": "1865:7:4"
+                      }
+                    ],
+                    "id": 2119,
+                    "name": "VariableDeclaration",
+                    "src": "1865:20:4"
+                  }
+                ],
+                "id": 2120,
+                "name": "ParameterList",
+                "src": "1864:22:4"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 2144,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 2121,
+                        "name": "ElementaryTypeName",
+                        "src": "1907:6:4"
+                      }
+                    ],
+                    "id": 2122,
+                    "name": "VariableDeclaration",
+                    "src": "1907:13:4"
+                  }
+                ],
+                "id": 2123,
+                "name": "ParameterList",
+                "src": "1906:15:4"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                },
+                                {
+                                  "typeIdentifier": "t_stringliteral_8aa4f6b9fbe8bd17d23425d28f653588c4728bbb98000749aaba81ee18a5d8e9",
+                                  "typeString": "literal_string \"User does not exist.\""
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                2277,
+                                2278
+                              ],
+                              "referencedDeclaration": 2278,
+                              "type": "function (bool,string memory) pure",
+                              "value": "require"
+                            },
+                            "id": 2124,
+                            "name": "Identifier",
+                            "src": "1932:7:4"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "!=",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "length",
+                                  "referencedDeclaration": null,
+                                  "type": "uint256"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "type": "bytes storage pointer",
+                                      "type_conversion": true
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_string_storage",
+                                              "typeString": "string storage ref"
+                                            }
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "type": "type(bytes storage pointer)",
+                                          "value": "bytes"
+                                        },
+                                        "id": 2125,
+                                        "name": "ElementaryTypeNameExpression",
+                                        "src": "1940:5:4"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": true,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "identityData",
+                                          "referencedDeclaration": 2059,
+                                          "type": "string storage ref"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "isConstant": false,
+                                              "isLValue": true,
+                                              "isPure": false,
+                                              "lValueRequested": false,
+                                              "type": "struct IdentityKeyContract.UserIdentity storage ref"
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "overloadedDeclarations": [
+                                                    null
+                                                  ],
+                                                  "referencedDeclaration": 2064,
+                                                  "type": "mapping(address => struct IdentityKeyContract.UserIdentity storage ref)",
+                                                  "value": "registeredIdentityList"
+                                                },
+                                                "id": 2126,
+                                                "name": "Identifier",
+                                                "src": "1946:22:4"
+                                              },
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "isConstant": false,
+                                                  "isLValue": false,
+                                                  "isPure": false,
+                                                  "lValueRequested": false,
+                                                  "member_name": "sender",
+                                                  "referencedDeclaration": null,
+                                                  "type": "address payable"
+                                                },
+                                                "children": [
+                                                  {
+                                                    "attributes": {
+                                                      "argumentTypes": null,
+                                                      "overloadedDeclarations": [
+                                                        null
+                                                      ],
+                                                      "referencedDeclaration": 2274,
+                                                      "type": "msg",
+                                                      "value": "msg"
+                                                    },
+                                                    "id": 2127,
+                                                    "name": "Identifier",
+                                                    "src": "1969:3:4"
+                                                  }
+                                                ],
+                                                "id": 2128,
+                                                "name": "MemberAccess",
+                                                "src": "1969:10:4"
+                                              }
+                                            ],
+                                            "id": 2129,
+                                            "name": "IndexAccess",
+                                            "src": "1946:34:4"
+                                          }
+                                        ],
+                                        "id": 2130,
+                                        "name": "MemberAccess",
+                                        "src": "1946:47:4"
+                                      }
+                                    ],
+                                    "id": 2131,
+                                    "name": "FunctionCall",
+                                    "src": "1940:54:4"
+                                  }
+                                ],
+                                "id": 2132,
+                                "name": "MemberAccess",
+                                "src": "1940:61:4"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "30",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "number",
+                                  "type": "int_const 0",
+                                  "value": "0"
+                                },
+                                "id": 2133,
+                                "name": "Literal",
+                                "src": "2004:1:4"
+                              }
+                            ],
+                            "id": 2134,
+                            "name": "BinaryOperation",
+                            "src": "1940:65:4"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "5573657220646f6573206e6f742065786973742e",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "string",
+                              "type": "literal_string \"User does not exist.\"",
+                              "value": "User does not exist."
+                            },
+                            "id": 2135,
+                            "name": "Literal",
+                            "src": "2007:22:4"
+                          }
+                        ],
+                        "id": 2136,
+                        "name": "FunctionCall",
+                        "src": "1932:98:4"
+                      }
+                    ],
+                    "id": 2137,
+                    "name": "ExpressionStatement",
+                    "src": "1932:98:4"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 2123
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "member_name": "identityData",
+                          "referencedDeclaration": 2059,
+                          "type": "string storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "type": "struct IdentityKeyContract.UserIdentity storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2064,
+                                  "type": "mapping(address => struct IdentityKeyContract.UserIdentity storage ref)",
+                                  "value": "registeredIdentityList"
+                                },
+                                "id": 2138,
+                                "name": "Identifier",
+                                "src": "2048:22:4"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2119,
+                                  "type": "address",
+                                  "value": "userIdentity"
+                                },
+                                "id": 2139,
+                                "name": "Identifier",
+                                "src": "2071:12:4"
+                              }
+                            ],
+                            "id": 2140,
+                            "name": "IndexAccess",
+                            "src": "2048:36:4"
+                          }
+                        ],
+                        "id": 2141,
+                        "name": "MemberAccess",
+                        "src": "2048:49:4"
+                      }
+                    ],
+                    "id": 2142,
+                    "name": "Return",
+                    "src": "2041:56:4"
+                  }
+                ],
+                "id": 2143,
+                "name": "Block",
+                "src": "1921:184:4"
+              }
+            ],
+            "id": 2144,
+            "name": "FunctionDefinition",
+            "src": "1835:270:4"
+          }
+        ],
+        "id": 2145,
+        "name": "ContractDefinition",
+        "src": "37:2075:4"
+      }
+    ],
+    "id": 2146,
+    "name": "SourceUnit",
+    "src": "0:2114:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x6274BFd462b83C62eEdbdC9B9beF2cae7DC1BEC9",
+      "transactionHash": "0x42359645321588e332a0cc465eebf80ed679795951001ad01ac013a90a74acbc"
+    }
+  },
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2024-12-13T10:10:33.723Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {
+      "registerUserIdentity(string)": {
+        "details": "Registering a new user in the system",
+        "params": {
+          "newIdentity": ": the address of the new user"
+        }
+      },
+      "removeUserIdentity(address)": {
+        "details": "Remove a user from the registry",
+        "params": {
+          "removedIdentity": ": the identity of the user"
+        }
+      },
+      "retrieveUserIdentity(address)": {
+        "details": "Get the identity of a user based on its address/public key",
+        "params": {
+          "userIdentity": ": address of the user"
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

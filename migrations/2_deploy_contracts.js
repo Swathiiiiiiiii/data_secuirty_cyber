@@ -1,5 +1,5 @@
 const DataSharingContract = artifacts.require("DataSharingContract");
-const IdentityContract = artifacts.require("IdentityContract");
+const IdentityKeyContract = artifacts.require("IdentityKeyContract");
 const EllipticCurveLib = artifacts.require("EllipticCurveLib");
 const ECSecp256k1 = artifacts.require("ECSecp256k1");
 const ECRingSignature = artifacts.require("ECRingSignature");
@@ -8,8 +8,8 @@ const ProxyContract = artifacts.require("ProxyContract");
 
 module.exports = function(deployer) {
 
-  deployer.deploy(IdentityContract).then(function(){
-      return deployer.deploy(ProxyContract, IdentityContract.address);
+  deployer.deploy(IdentityKeyContract).then(function(){
+      return deployer.deploy(ProxyContract, IdentityKeyContract.address);
   });
 
   deployer.deploy(EllipticCurveLib);
